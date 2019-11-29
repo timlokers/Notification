@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.deepOrangeAccent[200],
+        fontFamily: 'Geo'
       ),
       home: NotificationOverview(),
     );

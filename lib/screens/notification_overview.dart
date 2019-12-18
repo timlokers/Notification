@@ -37,6 +37,7 @@ class NotificationOverview extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, '/notification_detail');
+          print('helleu?');
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.deepOrange,

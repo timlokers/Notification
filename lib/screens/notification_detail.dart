@@ -12,7 +12,7 @@ class NotificationDetail extends StatelessWidget {
         title: Text('Notification Detail'),
       ),
       body: Container(
-        child: NotificationDetail(),
+        child: NotificationDetailStepper(),
       ),
     );
   }

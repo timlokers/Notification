@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+
+//Controller
 import '../Controller/api_handler.dart';
+
+//Widget
+import '../Widget/notification_list_item.dart';
 
 class NotificationOverview extends StatelessWidget {
   @override
@@ -42,11 +47,15 @@ class NotificationOverview extends StatelessWidget {
 //          )
           RaisedButton(
             child: Text('Get all notifications'),
-            onPressed: () => {
-              ApiHandler().getAllNotifications()
-            },
+            onPressed: () => {ApiHandler().getAllNotifications()},
           ),
+          NotificationListItem(),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+        backgroundColor: Colors.deepOrange,
       ),
     );
   }

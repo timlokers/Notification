@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 
-class NotificationDetail extends StatelessWidget{
+//Widget
+import '../Widget/notification_detail_stepper.dart';
+
+class NotificationDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return null;
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Notification Detail'),
+      ),
+      body: Container(
+        child: NotificationDetail(),
+      ),
+    );
   }
 }

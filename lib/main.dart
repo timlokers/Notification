@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 //import screens
 import 'screens/notification_overview.dart';
+import 'screens/notification_detail.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,10 +13,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Colors.deepOrangeAccent[200],
-        fontFamily: 'Geo'
-      ),
-      home: NotificationOverview(),
+          primaryColor: Colors.deepOrangeAccent[200], fontFamily: 'Geo'),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => NotificationOverview(),
+        '/notification_detail': (context) => NotificationDetail(),
+      },
     );
   }
 }

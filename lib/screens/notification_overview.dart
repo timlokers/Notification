@@ -27,24 +27,6 @@ class NotificationOverview extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-//          SingleChildScrollView(
-//            child: Container(
-//              child: Stepper(steps: [
-//                Step(
-//                  title: Text('Yeah'),
-//                  content: Text('Yeah just yeah!'),
-//                ),
-//                Step(
-//                  title: Text('Fuck yeah'),
-//                  content: Text('Yeah just fuck yeah!'),
-//                ),
-//                Step(
-//                  title: Text('YYYYEEAAAAAAHHHHH'),
-//                  content: Text('fuck, I shit my pants...'),
-//                )
-//              ]),
-//            ),
-//          )
           RaisedButton(
             child: Text('Get all notifications'),
             onPressed: () => {ApiHandler().getAllNotifications()},
@@ -53,7 +35,9 @@ class NotificationOverview extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/notification_detail');
+        },
         child: Icon(Icons.add),
         backgroundColor: Colors.deepOrange,
       ),

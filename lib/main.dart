@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.deepOrangeAccent[200], fontFamily: 'Geo'),
       initialRoute: '/',
       routes: {
-        '/': (context) => NotificationOverview(),
-        '/notification_detail': (context) => NotificationDetail(),
+        NotificationOverview.routeName : (context) => NotificationOverview(),
+        NotificationDetail.routeName : (context) => NotificationDetail(),
       },
     );
   }

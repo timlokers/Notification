@@ -6,7 +6,30 @@ import '../Controller/api_handler.dart';
 //Widget
 import '../Widget/notification_list_item.dart';
 
-class NotificationOverview extends StatelessWidget {
+//Model
+import '../model/notification.dart';
+
+class NotificationOverview extends StatefulWidget {
+  static const routeName = '/';
+
+  @override
+  _NotificationOverviewState createState() => _NotificationOverviewState();
+}
+
+class _NotificationOverviewState extends State<NotificationOverview> {
+  var notifications = new List<Notifications>();
+
+  @override
+  void initState() {
+    super.initState();
+    ApiHandler().getAllNotifications().then((response) {
+      setState(() {
+        notifications = response;
+      });
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,30 +37,15 @@ class NotificationOverview extends StatelessWidget {
         centerTitle: true,
         title: Text('Notification Overview'),
       ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            padding:
-                EdgeInsets.only(left: 0.0, top: 20.0, bottom: 0.0, right: 0.0),
-            color: Colors.lightBlue,
-            height: 50.0,
-            width: double.infinity,
-            child: Text(
-              'All notifications are shown down here',
-              textAlign: TextAlign.center,
-            ),
-          ),
-          RaisedButton(
-            child: Text('Get all notifications'),
-            onPressed: () => {ApiHandler().getAllNotifications()},
-          ),
-          NotificationListItem(),
-        ],
-      ),
+      body: ListView.builder(
+          itemCount: notifications.length,
+          itemBuilder: (context, index) {
+            return NotificationListItem(
+                notifications[index]); //Single list item widget
+          }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, '/notification_detail');
-          print('helleuw?');
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.deepOrange,

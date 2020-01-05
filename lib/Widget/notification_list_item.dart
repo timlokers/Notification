@@ -9,7 +9,7 @@ class NotificationListItem extends StatelessWidget {
   NotificationListItem(this.notification);
 
   void selectNotification(BuildContext context){
-    Navigator.pushNamed(context, NotificationDetail.routeName, arguments: notification.id);
+    Navigator.pushNamed(context, NotificationDetail.routeName, arguments: notification);
   }
 
   @override
@@ -75,16 +75,6 @@ class NotificationListItem extends StatelessWidget {
             ),
           ],
         ),
-
-/*      child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              notification.description,
-              style: TextStyle(color: Colors.deepOrange),
-            )
-          ],
-        ),*/
       ),
     );
   }

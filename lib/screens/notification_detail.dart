@@ -9,13 +9,14 @@ class NotificationDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final notification = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text('Notification Detail'),
       ),
       body: Container(
-        child: NotificationDetailForm(),
+        child: NotificationDetailForm(notification),
       ),
     );
   }

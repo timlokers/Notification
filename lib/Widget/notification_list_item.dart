@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../model/notification.dart';
-import '../Small Widgets/priority_icon.dart';
+import '../Small_Widgets/priority_icon.dart';
 import '../screens/notification_detail.dart';
 
 class NotificationListItem extends StatelessWidget {

@@ -7,8 +7,6 @@ import 'package:notification/model/notification.dart';
 //API handler
 import '../Controller/api_handler.dart';
 
-//Widgets
-import '../Widget/camera_detail.dart';
 
 class NotificationDetailForm extends StatefulWidget {
   var notification = new Notifications();
@@ -82,7 +80,6 @@ class _NotificationDetailFormState extends State<NotificationDetailForm> {
               }).toList(),
             ),
           ),
-          CameraDetail(),
           widget.notification == null
               ? new RaisedButton(
             //create new notification

@@ -14,4 +14,15 @@ class Notifications {
       timeStamp: json['Timestamp'],
     );
   }
+
+  Map<String, dynamic> toMap() {
+
+    var map = Map<String, dynamic>();
+    map['id'] = id;
+    map['description'] = description;
+    map['priority'] = priority;
+    map['timeStamp'] = timeStamp;
+
+    return map;
+  }
 }

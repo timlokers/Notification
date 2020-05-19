@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
 
 //Controller
 import '../Controller/api_handler.dart';
+import '../Controller/database_helper.dart';
 
 //Widget
 import '../Widget/notification_list_item.dart';
@@ -9,7 +11,9 @@ import '../Widget/notification_list_item.dart';
 //Model
 import '../model/notification.dart';
 
+
 class NotificationOverview extends StatefulWidget {
+
   static const routeName = '/';
 
   @override
@@ -17,14 +21,26 @@ class NotificationOverview extends StatefulWidget {
 }
 
 class _NotificationOverviewState extends State<NotificationOverview> {
-  var notifications = new List<Notifications>();
+
+  DatabaseHelper helper = DatabaseHelper();
+
+  List<Notifications> notificationList;
 
   @override
   void initState() {
-    super.initState();
+    final Future<Database> dbFuture = helper.initializeDatabase();
+    dbFuture.then((notifications){
+      Future<List<Notifications>> notificationListFuture = helper.getNotificationsList();
+      notificationListFuture.then((notificationList){
+        setState(() {
+          this.notificationList = notificationList;
+        });
+      });
+    });
+
     ApiHandler().getAllNotifications().then((response) {
       setState(() {
-        notifications = response;
+        notificationList = response;
       });
     });
   }
@@ -35,14 +51,16 @@ class _NotificationOverviewState extends State<NotificationOverview> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Notification Overview'),
+        title: Text('Notification Overview ' + helper.getCount().toString()),
       ),
-      body: ListView.builder(
-          itemCount: notifications.length,
-          itemBuilder: (context, index) {
-            return NotificationListItem(
-                notifications[index]); //Single list item widget
-          }),
+      body:
+          ListView.builder(
+              itemCount: notificationList.length,
+              itemBuilder: (context, index) {
+                return NotificationListItem(
+                    notificationList[index]); //Single list item widget
+              }),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, '/notification_detail');

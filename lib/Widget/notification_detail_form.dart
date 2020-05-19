@@ -7,6 +7,9 @@ import 'package:notification/model/notification.dart';
 //API handler
 import '../Controller/api_handler.dart';
 
+//Database helper
+import '../Controller/database_helper.dart';
+
 
 class NotificationDetailForm extends StatefulWidget {
   var notification = new Notifications();
@@ -18,6 +21,9 @@ class NotificationDetailForm extends StatefulWidget {
 }
 
 class _NotificationDetailFormState extends State<NotificationDetailForm> {
+
+  DatabaseHelper helper = DatabaseHelper();
+
   TextEditingController descriptionController = new TextEditingController();
 
   static final DateTime timestamp = new DateTime.now();
@@ -27,6 +33,8 @@ class _NotificationDetailFormState extends State<NotificationDetailForm> {
   String dropdownValue = 'High';
 
   File _image;
+
+  var notification = new Notifications();
 
   Future getImage() async {
 
@@ -84,11 +92,16 @@ class _NotificationDetailFormState extends State<NotificationDetailForm> {
               ? new RaisedButton(
             //create new notification
             onPressed: () async {
-              ApiHandler().createNotification(
+              notification.id = 0;
+              notification.description =  descriptionController.text;
+              notification.priority = dropdownValue;
+              notification.timeStamp = formatTimestamp;
+              helper.insertNotification(notification);
+              /*ApiHandler().createNotification(
                   '',
                   descriptionController.text,
                   dropdownValue,
-                  formatTimestamp);
+                  formatTimestamp);*/
               Navigator.pushReplacementNamed(context, '/');
             },
             child: Text(

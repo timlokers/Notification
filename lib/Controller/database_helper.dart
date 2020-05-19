@@ -77,6 +77,6 @@ class DatabaseHelper {
     for(int i = 0; i < count; i++){
       notificationList.add(Notifications.fromMapObject(notificationMapList[i]));
     }
+    return notificationList;
   }
-
 }

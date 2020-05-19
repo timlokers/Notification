@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:notification/model/notification.dart';
-import 'package:image_picker/image_picker.dart';
 
 //API handler
 import '../Controller/api_handler.dart';
+
 
 class NotificationDetailForm extends StatefulWidget {
   var notification = new Notifications();
@@ -29,11 +29,7 @@ class _NotificationDetailFormState extends State<NotificationDetailForm> {
   File _image;
 
   Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
 
-    setState(() {
-      _image = image;
-    });
   }
 
   @override
@@ -83,14 +79,6 @@ class _NotificationDetailFormState extends State<NotificationDetailForm> {
                 );
               }).toList(),
             ),
-          ),
-          new RaisedButton.icon(
-            onPressed: () {
-              getImage();
-            },
-            icon: Icon(
-              Icons.camera_enhance, size: 40, color: Colors.deepOrange,),
-            label: Text(''),
           ),
           widget.notification == null
               ? new RaisedButton(

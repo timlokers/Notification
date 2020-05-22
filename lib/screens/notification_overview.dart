@@ -38,11 +38,11 @@ class _NotificationOverviewState extends State<NotificationOverview> {
       });
     });
 
-    ApiHandler().getAllNotifications().then((response) {
+/*    ApiHandler().getAllNotifications().then((response) {
       setState(() {
         notificationList = response;
       });
-    });
+    });*/
   }
 
 
@@ -51,7 +51,7 @@ class _NotificationOverviewState extends State<NotificationOverview> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Notification Overview ' + helper.getCount().toString()),
+        title: Text('Notification Overview'),
       ),
       body:
           ListView.builder(

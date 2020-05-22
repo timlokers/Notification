@@ -48,9 +48,15 @@ class DatabaseHelper {
 
   Future<int> insertNotification(Notifications notifications) async {
     Database database = await this.database;
-    var result = await database.insert(
-        notificationTable, notifications.toMap());
-    return result;
+    try {
+      var result = await database.insert(
+          notificationTable, notifications.toMap());
+      return result;
+    }
+    on Exception catch(e){
+      print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ');
+      print(e);
+    }
   }
 
   Future<int> getCount() async {

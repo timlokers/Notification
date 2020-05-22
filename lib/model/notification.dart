@@ -21,12 +21,14 @@ class Notifications {
     map['description'] = description;
     map['priority'] = priority;
     map['timestamp'] = timeStamp;
+
+    return map;
   }
 
   Notifications.fromMapObject(Map<String, dynamic> map) {
     this.id = map['id'];
     this.description = map['description'];
-    this.priority = map['description'];
+    this.priority = map['priority'];
     this.timeStamp = map['timestamp'];
   }
 

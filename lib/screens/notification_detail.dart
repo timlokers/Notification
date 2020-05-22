@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../Widget/notification_detail_form.dart';
 
 class NotificationDetail extends StatelessWidget {
+
   static const routeName = '/notification_detail';
 
   @override

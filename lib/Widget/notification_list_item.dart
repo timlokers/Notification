@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../model/notification.dart';
-import '../Small_Widgets/priority_icon.dart';
 import '../screens/notification_detail.dart';
 
 class NotificationListItem extends StatelessWidget {
@@ -32,7 +31,7 @@ class NotificationListItem extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.2,
               child: Row(
                 children: <Widget>[
-                  PriorityIcon(notification.priority),
+                  //PriorityIcon(notification.priority),
                 ],
               ),
               color: Colors.grey[300],
